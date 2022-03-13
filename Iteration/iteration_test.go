@@ -1,4 +1,4 @@
-package iteration
+package main
 
 import "testing"
 
@@ -8,20 +8,5 @@ func TestRepeat(t *testing.T) {
 
 	if repeated != expected {
 		t.Errorf("expected %q repeated %q", expected, repeated)
-	}
-}
-
-const repeatCount = 5
-
-func Repeat(character string) string {
-	var repeated string
-	for i := 0; i < repeatCount; i++ {
-		repeated += character
-	}
-	return repeated
-}
-func BenchmarkRepeat(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		Repeat("a")
 	}
 }
