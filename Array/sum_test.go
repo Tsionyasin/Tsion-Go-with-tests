@@ -1,4 +1,4 @@
-package array
+package main
 
 import "testing"
 import "reflect"
@@ -45,33 +45,4 @@ func TestSum(t *testing.T) {
 		want := []int{0, 9}
 		checkSums(t, got, want)
 	})
-}
-
-func Sum(numbers []int) int {
-	sum := 0
-	for _, number := range numbers {
-		sum += number
-	}
-	return sum
-}
-func TestSumAllTails(t *testing.T) {
-	got := SumAllTails([]int{1, 2}, []int{0, 9})
-	want := []int{2, 9}
-
-	if !reflect.DeepEqual(got, want) {
-		t.Errorf("got %v want %v", got, want)
-	}
-}
-func SumAllTails(numbersToSum ...[]int) []int {
-	var sums []int
-	for _, numbers := range numbersToSum {
-		if len(numbers) == 0 {
-			sums = append(sums, 0)
-		} else {
-			tail := numbers[1:]
-			sums = append(sums, Sum(tail))
-		}
-	}
-
-	return sums
 }
